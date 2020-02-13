@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SearchMatchTextblock"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -37,16 +37,13 @@
             <Run Text="{Binding ElementName=HighlightingTextBlock, Path=MatchCount, Mode=OneWay}" />
         </TextBlock>
 
-        <local:HighlightingTextBlock 
+        <local:HighlightingTextBlock
             x:Name="HighlightingTextBlock"
             Grid.Row="2" Grid.Column="1"
             Margin="10"
             Text="{Binding ElementName=MainTextBox, Path=Text}"
-            HighlightText="{Binding ElementName=HighlightTextBox, Path=Text}" 
-            FontSize="18" 
-            HighlightBackground="LightPink"
-            HighlightForeground="Black" 
-            TextWrapping="Wrap" />
+            HighlightText="{Binding ElementName=HighlightTextBox, Path=Text}"
+            FontSize="18"  HighlightBackground="LightPink"
+            HighlightForeground="Black"  TextWrapping="Wrap" />
     </Grid>
-
 </Window>
