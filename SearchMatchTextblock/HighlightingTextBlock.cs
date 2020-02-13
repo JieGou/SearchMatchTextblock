@@ -192,6 +192,8 @@ namespace SearchMatchTextblock
             var find = 0;
             while (true)
             {
+                var oldFind = find;
+
                 //能匹配的 需要亮显的字符串
                 var canBeMatchTextList =
                     (from item in highlightTextList
@@ -202,13 +204,14 @@ namespace SearchMatchTextblock
                     .ToList();
                 if (canBeMatchTextList.Count == 0)
                 {
+                    //字符串的最后不着色
+                    highlightTextBlock.Inlines.Add(GetRunForText(mainText.Substring(oldFind, mainText.Length - oldFind), false));
                     break;
                 }
 
                 string highlightText = canBeMatchTextList.First();
                 var searchTextLength = highlightText.Length;
 
-                var oldFind = find;
                 find = mainText.IndexOf(highlightText, find, StringComparison.InvariantCultureIgnoreCase);
                 if (find == -1)
                 {
